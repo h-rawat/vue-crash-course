@@ -1,15 +1,11 @@
 <script>
 export default {
-  data() {
-    return {
-      name: "John Doe",
-      status: "active",
-      tasks: ["Task1", "Task2", "Task3"],
-      link: "https://google.com",
-    };
-  },
-  methods: {
-    toggleStatus() {
+  setup() {
+    const name = "John Doe";
+    const status = "active";
+    const tasks = ["Task1", "Task2", "Task3", "Task4"];
+
+    const toggleStatus = () => {
       if (this.status === "active") {
         this.status = "pending";
       } else if (this.status === "pending") {
@@ -17,7 +13,14 @@ export default {
       } else {
         this.status = "active";
       }
-    },
+    };
+
+    return {
+      name,
+      status,
+      tasks,
+      toggleStatus,
+    };
   },
 };
 </script>
@@ -33,11 +36,9 @@ export default {
     <li v-for="task in tasks" :key="task">{{ task }}</li>
   </ul>
 
-  <!-- <a v-bind:href="link">Google Link</a> -->
-  <a :href="link">Google Link</a>
   <br />
 
-  <button v-on:click="toggleStatus">Change Status</button>
+  <!-- <button v-on:click="toggleStatus">Change Status</button> -->
   <!-- shorter way to do events -->
   <button @click="toggleStatus">Change Status</button>
 </template>

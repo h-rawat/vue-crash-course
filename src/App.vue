@@ -5,6 +5,7 @@ export default {
       name: "John Doe",
       status: "active",
       tasks: ["Task1", "Task2", "Task3"],
+      link: "https://google.com",
     };
   },
 };
@@ -20,4 +21,7 @@ export default {
   <ul>
     <li v-for="task in tasks" :key="task">{{ task }}</li>
   </ul>
+
+  <!-- <a v-bind:href="link">Google Link</a> -->
+  <a :href="link">Google Link</a>
 </template>
